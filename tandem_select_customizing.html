@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Tandem Select Plugin Example</title>
+
+	<link href='http://alexgorbatchev.com/pub/sh/current/styles/shCore.css' rel='stylesheet' type='text/css'/>
+	<link href='http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" type="text/javascript"></script> 
+
+	<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+	<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCss.js' type='text/javascript'></script>
+	<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushRuby.js' type='text/javascript'></script>
+	<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js' type='text/javascript'></script>
+
+<script language='javascript'>
+SyntaxHighlighter.all();
+</script>
+
+<style type="text/css">
+	p, ul { width: 75%;
+		margin-left: auto;
+		margin-right: auto;
+		}
+	.header { 
+		text-align: center;
+		font-size: 18px;
+		font-family: Helvetica, Arial, sans-serif;
+		color: darkred;
+		}
+	.subheader { 
+		font-size: 16px;
+		font-family: Helvetica, Arial, sans-serif;
+		color: darkred;
+		}
+	.class-name { color: blue; font-family: monospace; }
+	.attr-name { color: darkred;  }
+</style>
+	
+</head>
+
+<body>
+
+<p class="header">Customizing the Tandem Select jQuery Plugin</p>
+
+<p>The plugin relies on the Select menus and related components having specific class names that begin with 'tandem-select'.</p>
+	
+<p>The easiest way to get started is to cut and paste the HTML code from the template file (<span class='class-name'>tandem_select_template.txt</span>) and then customize it to fit your application.</p>
+
+<p>The template uses a three column layout - Source (src) and Destination (dst) Select menus with the controls in between - 
+	all of which
+	are wrapped in a container DIV.</p>
+
+<p>The basic layout looks like this:</p>
+
+<div style="margin-left: auto; margin-right: auto; width: 75%; border: 1px solid #aaa; padding: 5px;">
+<pre class="brush: html;">&lt;div class='tandem-select-container'&gt;
+
+  &lt;div class='tandem-select-src-div'&gt;
+    &lt;select multiple='multiple' class='tandem-select-src-select'&gt;
+    &lt;option value="abc"&gt;Options go here&lt;/option&gt; 
+    &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;div class='tandem-select-controls-div'&gt;
+    &lt;input type="button" class="tandem-select-move-to-src" value="Add" /&gt;
+    &lt;input type="button" class="tandem-select-move-to-dst" value="Remove" /&gt;
+    &lt;input type="text" class="tandem-select-search-src"/&gt;
+  &lt;/div&gt;
+
+  &lt;div class='tandem-select-dst-div'&gt;
+    &lt;select multiple='multiple' class='tandem-select-dst-select' 
+                  id='YOUR_SELECT_ID' name='YOUR_SELECT_NAME'&gt;&lt;/select&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div style="clear: both;"&gt;&lt;/div&gt;</pre></div>
+
+<p> </p>
+<p class="subheader">DIVs</p>
+<p>The container DIV with class '<span class='class-name'>tandem-select-container</span>' is REQUIRED. </p>
+
+<p>Within that are three DIVs that hold the Source Select menu, 
+	the Controls and the Destination Select menu respectively. These DIVs are OPTIONAL but they are useful for layout.</p>
+
+<p class="subheader">Select Menus</p>
+<p>The Source Select menu MUST have the class '<span class='class-name'>tandem-select-src-select</span>'. 
+	This is where you place your list of options</p>
+
+<p>The Destination Select menu MUST have the class '<span class='class-name'>tandem-select-dst-select</span>'. 
+	In addition you need to give this unique <span class='attr-name'>ID</span> 
+	and <span class='attr-name'>NAME</span> attributes. </p>
+
+<p>The <span class='attr-name'>NAME</span> attribute is the standard one that you would use for this key/value pair in the FORM
+	that includes the Tandem Select. </p>
+<p>The <span class='attr-name'>ID</span> attribute is used by the plugin to 
+	identify this particular Tandem Select. 
+	You can have multiple Tandem Selects on a page, each with a unique ID. The value for the ID is arbitrary but 
+	some web application
+	frameworks, such as Rails, have conventions for form element NAME and IDs that you will want to follow.</p>
+
+<p class="subheader">Buttons</p>
+<p>There are two Buttons that are used to move options between the Source and Destination Select Menus. These MUST have 
+	the classes '<span class='class-name'>tandem-select-move-to-src</span>'	and 
+	'<span class='class-name'>tandem-select-move-to-dst</span>' for the respective actions.</p>
+
+<p class="subheader">Search Field</p>
+<p>Optionally you can include a Search field in the form of an INPUT text field with the class 
+	'<span class='class-name'>tandem-select-search-src</span>'.
+	Typing text into this will highlight options in the Source menu that match, making it easy to find specific options
+	in a long list.
+	</p>
+<p>For the sake of completeness, you can create a search field for the Destination menu with the class 
+	'<span class='class-name'>tandem-select-search-dst</span>',
+	although this is probably not useful in most cases.
+	</p>
+
+<p class="subheader">CSS</p>
+<p>The look and layout of these elements is defined in the CSS file. The one that ships with this plugin should serve as a
+	reasonable starting point.</p>
+
+<p>One important style is defined in the class '<span class='class-name'>tandem-select-option-disabled</span>'. 
+	By default, when options are moved to 
+	the Destination menu they remain in the Source menu, but appear in gray. If you prefer to hide the transferred 
+	options then set this class to 'display: none'.</p>
+
+<p><a href="tandem_select_home.html">Back to the Main Page</a></p>
+</body>
+</html>

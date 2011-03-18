@@ -1,0 +1,38 @@
+<!-- tandemSelect jQuery plugin - html block start -->
+<div class='tandem-select-container'>
+
+    <!-- Source Div and Select Menu -->
+    <div class='tandem-select-src-div'>
+        Source List
+        <select multiple='multiple' class='tandem-select-src-select'>
+            <option value="AL">Alabama</option> 
+            <option value="AK">Alaska</option> 
+            <option value="AZ">Arizona</option> 
+            <option value="AR">Arkansas</option> 
+            <option value="xx">Your options go here...</option> 
+        </select>
+    </div>
+
+    <!-- Controls DIV, Buttons and Search box -->
+    <div class='tandem-select-controls-div'>
+        Controls
+        <br/> <br/>
+
+        <input type="button" class="tandem-select-move-to-src" value="&nbsp;&lt;&nbsp;" />
+        &nbsp; &nbsp; 
+        <input type="button" class="tandem-select-move-to-dst" value="&nbsp;&gt;&nbsp;" />	
+
+        <br/> <br/>
+        Search<br/>
+        <input type="text" class="tandem-select-search-src" size="15"/>
+    </div>
+
+    <!-- Destination Div and Select Menu -->
+    <div class='tandem-select-dst-div'>
+        Destination List
+        <select multiple='multiple' class='tandem-select-dst-select' id='YOUR_SELECT_ID' name='YOUR_SELECT_NAME'></select>
+    </div>
+
+</div>
+<div style="clear: both;"></div>
+<!-- tandemSelect jQuery plugin - html block end -->
