@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Tandem Select Plugin Example</title>
+
+	<link href="tandem_select.css" media="all" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+		p, ul { width: 75%;
+			margin-left: auto;
+			margin-right: auto;
+			}
+		.header { 
+			text-align: center;
+			font-size: 18px;
+			font-family: Helvetica, Arial, sans-serif;
+			color: darkred;
+			}
+		.subheader { 
+			font-size: 16px;
+			font-family: Helvetica, Arial, sans-serif;
+			color: darkred;
+			}
+		.class-name { color: blue; font-family: monospace; }
+		.attr-name { color: darkred;  }
+	</style>
+	
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" type="text/javascript"></script> 
+
+	<script src="tandem_select.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+	
+		// Setup the tandem select machinery with these two select menus
+		
+		$(document).ready(function () {
+			$('#my_select_0').tandemSelect();
+			$('#my_select_1').tandemSelect();
+		});
+		
+		// Demo code that outputs the submitted values as an alert
+		$(document).ready(function () {
+			$('#demo_form').submit(function () {
+				var str0 = jQuery('#my_select_0 option').map(function(){return this.value;}).get().join(', ');
+				var str1 = jQuery('#my_select_1 option').map(function(){return this.value;}).get().join(', ');
+				alert("You selected: \nMenu 1: " + str0 + "\nMenu 2: " + str1);
+			});
+		});
+		
+	</script>
+</head>
+
+<body>
+
+<p class="header">Tandem Select jQuery Plugin - Demo with Two Tandem Selects</p>
+
+
+<p>Multiple tandem select menus can be included in the same form, as shown here</p>
+	
+
+
+<form id='demo_form' action=''>
+
+<!-- tandem_select jQuery plugin - html block start -->
+<div class='tandem-select-container'>
+
+<div class='tandem-select-src-div'>
+	Source List
+	<select multiple='multiple' class='tandem-select-src-select'>
+	<option value="AL">Alabama</option> 
+	<option value="AK">Alaska</option> 
+	<option value="AZ">Arizona</option> 
+	<option value="AR">Arkansas</option> 
+	<option value="CA">California</option> 
+	<option value="CO">Colorado</option> 
+	<option value="CT">Connecticut</option> 
+	<option value="DE">Delaware</option> 
+	<option value="DC">District Of Columbia</option> 
+	<option value="FL">Florida</option> 
+	<option value="GA">Georgia</option> 
+	<option value="HI">Hawaii</option> 
+	<option value="ID">Idaho</option> 
+	<option value="IL">Illinois</option> 
+	<option value="IN">Indiana</option> 
+	<option value="IA">Iowa</option> 
+	<option value="KS">Kansas</option> 
+	<option value="KY">Kentucky</option> 
+	<option value="LA">Louisiana</option> 
+	<option value="ME">Maine</option> 
+	<option value="MD">Maryland</option> 
+	<option value="MA">Massachusetts</option> 
+	<option value="MI">Michigan</option> 
+	<option value="MN">Minnesota</option> 
+	<option value="MS">Mississippi</option> 
+	<option value="MO">Missouri</option> 
+	<option value="MT">Montana</option> 
+	<option value="NE">Nebraska</option> 
+	<option value="NV">Nevada</option> 
+	<option value="NH">New Hampshire</option> 
+	<option value="NJ">New Jersey</option> 
+	<option value="NM">New Mexico</option> 
+	<option value="NY">New York</option> 
+	<option value="NC">North Carolina</option> 
+	<option value="ND">North Dakota</option> 
+	<option value="OH">Ohio</option> 
+	<option value="OK">Oklahoma</option> 
+	<option value="OR">Oregon</option> 
+	<option value="PA">Pennsylvania</option> 
+	<option value="RI">Rhode Island</option> 
+	<option value="SC">South Carolina</option> 
+	<option value="SD">South Dakota</option> 
+	<option value="TN">Tennessee</option> 
+	<option value="TX">Texas</option> 
+	<option value="UT">Utah</option> 
+	<option value="VT">Vermont</option> 
+	<option value="VA">Virginia</option> 
+	<option value="WA">Washington</option> 
+	<option value="WV">West Virginia</option> 
+	<option value="WI">Wisconsin</option> 
+	<option value="WY">Wyoming</option>
+
+	</select>
+</div>
+
+<div class='tandem-select-controls-div'>
+
+	Controls
+	<br/> <br/>
+
+	<input type="button" class="tandem-select-move-to-src" value="&nbsp;&lt;&nbsp;" />
+    &nbsp; &nbsp; 
+	<input type="button" class="tandem-select-move-to-dst" value="&nbsp;&gt;&nbsp;" />	
+
+	<br/> <br/>
+
+	Search<br/>
+	<input type="text" class="tandem-select-search-src" size="15"/>
+	
+	<br/> <br/>
+	<input id="submit" name="commit" type="submit" value="Submit Choices" />
+</div>
+
+
+<div class='tandem-select-dst-div'>
+	Destination List
+	<select multiple='multiple' class='tandem-select-dst-select' id='my_select_0' name='my_select_0'></select>
+</div>
+
+</div>
+<div style="clear: both;"></div>
+<!-- tandem_select jQuery plugin - html block end -->
+
+<p> </p>
+
+<!-- tandem_select jQuery plugin - html block start -->
+<div class='tandem-select-container'>
+
+<div class='tandem-select-src-div'>
+	Source List
+	<select multiple='multiple' class='tandem-select-src-select'>
+	<option value="AL">Alabama</option> 
+	<option value="AK">Alaska</option> 
+	<option value="AZ">Arizona</option> 
+	<option value="AR">Arkansas</option> 
+	<option value="CA">California</option> 
+	<option value="CO">Colorado</option> 
+	<option value="CT">Connecticut</option> 
+	<option value="DE">Delaware</option> 
+	<option value="DC">District Of Columbia</option> 
+	<option value="FL">Florida</option> 
+	<option value="GA">Georgia</option> 
+	<option value="HI">Hawaii</option> 
+	<option value="ID">Idaho</option> 
+	<option value="IL">Illinois</option> 
+	<option value="IN">Indiana</option> 
+	<option value="IA">Iowa</option> 
+	<option value="KS">Kansas</option> 
+	<option value="KY">Kentucky</option> 
+	<option value="LA">Louisiana</option> 
+	<option value="ME">Maine</option> 
+	<option value="MD">Maryland</option> 
+	<option value="MA">Massachusetts</option> 
+	<option value="MI">Michigan</option> 
+	<option value="MN">Minnesota</option> 
+	<option value="MS">Mississippi</option> 
+	<option value="MO">Missouri</option> 
+	<option value="MT">Montana</option> 
+	<option value="NE">Nebraska</option> 
+	<option value="NV">Nevada</option> 
+	<option value="NH">New Hampshire</option> 
+	<option value="NJ">New Jersey</option> 
+	<option value="NM">New Mexico</option> 
+	<option value="NY">New York</option> 
+	<option value="NC">North Carolina</option> 
+	<option value="ND">North Dakota</option> 
+	<option value="OH">Ohio</option> 
+	<option value="OK">Oklahoma</option> 
+	<option value="OR">Oregon</option> 
+	<option value="PA">Pennsylvania</option> 
+	<option value="RI">Rhode Island</option> 
+	<option value="SC">South Carolina</option> 
+	<option value="SD">South Dakota</option> 
+	<option value="TN">Tennessee</option> 
+	<option value="TX">Texas</option> 
+	<option value="UT">Utah</option> 
+	<option value="VT">Vermont</option> 
+	<option value="VA">Virginia</option> 
+	<option value="WA">Washington</option> 
+	<option value="WV">West Virginia</option> 
+	<option value="WI">Wisconsin</option> 
+	<option value="WY">Wyoming</option>
+	</select>
+</div>
+
+
+<div class='tandem-select-controls-div'>
+	Controls
+	<br/> <br/>
+
+	<input type="button" class="tandem-select-move-to-src" value="&nbsp;&lt;&nbsp;" />
+    &nbsp; &nbsp; 
+	<input type="button" class="tandem-select-move-to-dst" value="&nbsp;&gt;&nbsp;" />	
+
+	<br/> <br/>
+	Search<br/>
+	<input type="text" class="tandem-select-search-src" size="15"/>
+</div>
+
+<div class='tandem-select-dst-div'>
+	Destination List
+	<select multiple='multiple' class='tandem-select-dst-select' id='my_select_1' name='my_select_1'></select>
+</div>
+
+</div>
+
+<div style="clear: both;"></div>
+<!-- tandem_select jQuery plugin - html block end -->
+
+</form>
+
+<p> </p>
+<p><a href="tandem_select_home.html">Back to the Main Page</a></p>
+
+
+</body>
+</html>

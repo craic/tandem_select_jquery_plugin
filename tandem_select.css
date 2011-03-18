@@ -1,0 +1,51 @@
+/* CSS styles to accompany Tandem Select jQuery plugin */
+
+/* https://github.com/craic/tandem_select_jquery_plugin
+   Copyright 2011 Robert Jones jones@craic.com 
+   Freely distributed under the MIT license  */
+
+.tandem-select-option-disabled { color: lightgray; }
+
+.tandem-select-container {
+	background-color: #eee;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
+	height: 250px;
+}
+
+.tandem-select-src-div {
+	background-color: #fdd;
+	width: 40%;
+	height: 250px;
+	float: left;
+}
+
+.tandem-select-dst-div {
+	background-color: #fdd;
+	width: 40%;
+	height: 250px;
+	float: right;
+}
+
+.tandem-select-controls-div {
+	width: 20%;
+	vertical-align: top;
+	text-align: center;
+	float: left;
+}
+
+.tandem-select-src-select {
+	width: 100%;
+	height: 92%;
+}
+.tandem-select-dst-select {
+	width: 100%;
+	height: 92%;
+}
+
+.tandem-select-move-to-src {
+}
+
+.tandem-select-move-to-dst {	
+}

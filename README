@@ -1,0 +1,6 @@
+The Tandem Select jQuery Plugin implments tandem, or two stage, select menus in web forms using jQuery and JavaScript.
+
+A standard HTML multiple Select menu allows the user to select multiple options using Command-Click. But when the list of options is long, requiring the user to scroll, it becomes cumbersome and prone to errors.
+
+An effective solution is to use two select menus in tandem, with buttons allowing options to be swapped between the two.
+
