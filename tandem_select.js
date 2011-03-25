@@ -2,7 +2,8 @@
 // https://github.com/craic/tandem_select_jquery_plugin
 // Copyright 2011 Robert Jones jones@craic.com 
 // Freely distributed under the MIT license
-// Version 0.1  March 2011
+// Version 0.2  March 2011
+// - fixed the submit event handler
 
 jQuery.fn.tandemSelect = function () {
 
@@ -13,7 +14,6 @@ jQuery.fn.tandemSelect = function () {
 
 	// define objects for each of the elements in the container
 	var select_src = container.find('.tandem-select-src-select');
-
 	var button_src = container.find('.tandem-select-move-to-src');
 	var button_dst = container.find('.tandem-select-move-to-dst');
 	var search_src = container.find('.tandem-select-search-src');
@@ -25,20 +25,20 @@ jQuery.fn.tandemSelect = function () {
 	    select_src.find(':selected')
 			.filter(':not(.tandem-select-option-disabled)')
 			.clone()
+			.attr('selected', 'selected')
 			.appendTo(select_dst);
 
 	    select_src.find(':selected')
 			.filter(':not(.tandem-select-option-disabled)')
 			.addClass('tandem-select-option-disabled')
 			.attr('selected', false);
-			
 		// todo - Clear the search windows when a button is clicked?
 	});
 
 	// Setup the button that moves a value back to the src select
 	button_src.click(function () {
 		// Find selected dst records in select_src and highlight them
-	    select_dst.find(':selected').map(function (){
+	    select_dst.find(':selected').map(function () {
 			select_src.find("option[value='" + jQuery(this).attr('value') + "']")
 				.removeClass('tandem-select-option-disabled');
 	    });
@@ -47,15 +47,15 @@ jQuery.fn.tandemSelect = function () {
 	});
 	
 	// Search the query string in the src select menu
-    if ( search_src.length == 1 ) {
+    if (search_src.length == 1) {
 		search_src.keyup(function () {
 			var search_str = jQuery(this).val();
 
 			select_src.children()
 				.attr('selected', '')
 				.filter(function () {
-			    	if (search_str == '') {
-			      		return false;
+					if (search_str == '') {
+						return false;
 			    	}
 			    	return jQuery(this)
 			      		.text()
@@ -66,7 +66,7 @@ jQuery.fn.tandemSelect = function () {
 	}
 
 	// Search the query string in the dst select menu - included for completeness
-    if ( search_dst.length == 1 ) {
+    if (search_dst.length == 1) {
 		search_dst.keyup(function () {
 			var search_str = jQuery(this).val();
 
@@ -85,11 +85,12 @@ jQuery.fn.tandemSelect = function () {
 	}
 
 	// prior to submit, select everything in select_dst and deselect everything in select_src
-    if ( select_src.form ) {
-		var form_selector = '#' + select_src.form.id.toString();
-		jQuery(form_selector).submit(function () {
-			select_dst.children().attr('selected', 'selected');
-			select_src.children().attr('selected', false);
+    if ( select_dst.parents('form:first') ) {
+		var form_selector = '#' + select_dst.parents('form:first')[0].id;
+		jQuery(form_selector).submit(function (e) {
+			// This applies to all tandem selects in this form
+			jQuery(this).find('.tandem-select-dst-select').children().attr('selected', 'selected');
+			jQuery(this).find('.tandem-select-src-select').children().attr('selected', false);
 		});	
 	}
 };
